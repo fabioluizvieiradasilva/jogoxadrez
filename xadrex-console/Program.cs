@@ -8,14 +8,21 @@ namespace xadrex_console
     {
         static void Main(string[] args)
         {
-            Table tab = new Table(8, 8);
+            try
+            {
 
-            tab.colocarPeca(new Torre(tab, Cor.Preto), new Posicao(0, 0));
-            tab.colocarPeca(new Torre(tab, Cor.Preto), new Posicao(1, 3));
-            tab.colocarPeca(new Rei(tab, Cor.Preto), new Posicao(2, 4));
+                Table tab = new Table(8, 8);
 
-            Tela.imprimirTabuleiro(tab);
+                tab.colocarPeca(new Torre(tab, Cor.Preto), new Posicao(0, 0));
+                tab.colocarPeca(new Torre(tab, Cor.Preto), new Posicao(1, 9));
+                tab.colocarPeca(new Rei(tab, Cor.Preto), new Posicao(0, 2));
 
+                Tela.imprimirTabuleiro(tab);
+            }
+            catch(TableException e)
+            {
+                Console.WriteLine(e.Message);
+            }
             Console.ReadLine();
         }
     }
